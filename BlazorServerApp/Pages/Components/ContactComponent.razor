@@ -1,0 +1,24 @@
+﻿<ol>
+    <li>@contact.FirstName</li>
+    <li>@contact.LastName</li>
+    @if (DisplayEmail)
+    {
+        <li>@contact.Email</li>
+    }
+    @if (displayInfo)
+    {
+        <div>The email Address of <b>@contact.FirstName @contact.LastName</b>  is <b>@contact.Email</b> </div>
+    }
+    <button onclick="@(()=>{displayInfo=!displayInfo;})">Show info</button>
+</ol>
+
+@code {
+    [Parameter]
+    public Contact contact { get; set; }
+
+    [Parameter]
+    public bool DisplayEmail { get; set; }
+
+    private bool displayInfo = false;
+
+}

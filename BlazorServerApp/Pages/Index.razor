@@ -1,0 +1,54 @@
+﻿@page "/"
+@using BlazorServerApp.Pages.Components
+
+<h3>List of contacts</h3>
+
+<input type="checkbox"/><label>Display Email</label>  
+@foreach (var contact in contacts)
+{
+  <ContactComponent contact="@contact"/>
+}
+
+<br/>
+<TextBoxComponent @attributes="@textBoxAttribute"></TextBoxComponent>
+
+
+@code {
+    private List<Contact> contacts;
+    private Dictionary<string, object> textBoxAttribute = new Dictionary<string, object>
+    {
+        {"placeholder","Text box"},
+        {"disabled",true}
+    };
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        contacts = new List<Contact>
+        {
+            new Contact
+            {
+                FirstName = "Nayeem", 
+                LastName= "Hasan",
+                Email="nyh@gmail.com"
+            },
+            new Contact
+            {
+                FirstName = "kuddus",
+                LastName= "Hasan",
+                Email="kd@gmail.com"
+            },
+            new Contact
+            {
+                FirstName = "ab",
+                LastName= "khan",
+                Email="ab@gmail.com"
+            },new Contact
+            {
+                FirstName = "db",
+                LastName= "hussain",
+                Email="db@gmail.com"
+            },
+        };
+    }
+}
