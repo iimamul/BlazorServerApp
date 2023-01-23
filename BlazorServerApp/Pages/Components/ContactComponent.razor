@@ -10,6 +10,7 @@
         <div>The email Address of <b>@contact.FirstName @contact.LastName</b>  is <b>@contact.Email</b> </div>
     }
     <button onclick="@(()=>{displayInfo=!displayInfo;})">Show info</button>
+    <button onclick="@(()=>DeleteCurrentContact.InvokeAsync(contact))">Delete Contact</button>
     <hr/>
 </ol>
 
@@ -19,6 +20,9 @@
 
     [Parameter]
     public bool DisplayEmail { get; set; }
+
+    [Parameter]
+    public EventCallback<Contact> DeleteCurrentContact { get; set; }
 
     private bool displayInfo = false;
 

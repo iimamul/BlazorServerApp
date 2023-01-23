@@ -7,12 +7,11 @@
 
 @foreach (var contact in contacts)
 {
-  <ContactComponent contact="@contact" DisplayEmail="@displayEmail"/>
+    <ContactComponent contact="@contact" DisplayEmail="@displayEmail" DeleteCurrentContact="DeleteContact" />
 }
 
 <br/>
 <TextBoxComponent @attributes="@textBoxAttribute"></TextBoxComponent>
-
 
 @code {
     private bool displayEmail = true;
@@ -22,6 +21,11 @@
         {"placeholder","Text box"},
         {"disabled",true}
     };
+
+    private void DeleteContact(Contact contact)
+    {
+        contacts.Remove(contact);
+    }
 
     protected override void OnInitialized()
     {
