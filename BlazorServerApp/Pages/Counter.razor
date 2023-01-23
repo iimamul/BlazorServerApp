@@ -8,10 +8,8 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@for(int i=0; i <= 10; i++)
-{
-    <div>Here is some number @i</div>
-}
+
+<input type="number" @bind="@currentCount"/>
 
 @code {
     private int currentCount = 0;
