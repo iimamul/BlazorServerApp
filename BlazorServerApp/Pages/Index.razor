@@ -3,10 +3,10 @@
 
 <h3>List of contacts</h3>
 
-<input type="checkbox"/><label>Display Email</label>  
+<input type="checkbox" onchange="@(()=>{displayEmail=!displayEmail;})"/><label>Display Email</label>  
 @foreach (var contact in contacts)
 {
-  <ContactComponent contact="@contact"/>
+  <ContactComponent contact="@contact" DisplayEmail="@displayEmail"/>
 }
 
 <br/>
@@ -14,6 +14,7 @@
 
 
 @code {
+    private bool displayEmail = false;
     private List<Contact> contacts;
     private Dictionary<string, object> textBoxAttribute = new Dictionary<string, object>
     {
